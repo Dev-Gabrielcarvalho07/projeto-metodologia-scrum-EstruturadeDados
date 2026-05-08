@@ -1,0 +1,69 @@
+package br.com.projeto.service;
+
+import br.com.projeto.model.Produto;
+import java.util.LinkedList;
+
+public class TabelaHash {
+    // Usando encadeamento (separating chaining) para tratar colisões.
+    private LinkedList<Produto>[] tabela;
+    private int tamanho;
+
+    @SuppressWarnings("unchecked")
+    public TabelaHash(int tamanho) {
+        this.tamanho = tamanho;
+        this.tabela = new LinkedList[tamanho];
+        for (int i = 0; i < tamanho; i++) {
+            this.tabela[i] = new LinkedList<>();
+        }
+    }
+
+    // Função hash simples conforme requisito: index = id % tamanho
+    private int hash(int id) {
+        return id % tamanho;
+    }
+
+    // Assinatura exigida pelo requisito
+    public void inserir(Produto p) {
+        if (p == null)
+            return;
+
+        int index = hash(p.id);
+
+        // Verifica se o produto já existe para atualizar (evitar duplicatas com mesmo
+        // ID)
+        for (Produto produtoExistente : tabela[index]) {
+            if (produtoExistente.id == p.id) {
+                produtoExistente.nome = p.nome;
+                produtoExistente.preco = p.preco;
+                return;
+            }
+        }
+
+        // Trata colisões via encadeamento (adicionando à lista na posição do array)
+        tabela[index].add(p);
+    }
+
+    // Assinatura exigida pelo requisito
+    public Produto buscar(int id) {
+        int index = hash(id);
+
+        for (Produto p : tabela[index]) {
+            if (p.id == id) {
+                return p; // Produto encontrado
+            }
+        }
+
+        return null; // Produto não encontrado
+    }
+
+    // Método auxiliar para visualizar a estrutura interna e colisões
+    public void imprimirTabela() {
+        for (int i = 0; i < tamanho; i++) {
+            System.out.print("Index " + i + ": ");
+            for (Produto p : tabela[i]) {
+                System.out.print("[" + p.id + " - " + p.nome + "] -> ");
+            }
+            System.out.println("null");
+        }
+    }
+}
