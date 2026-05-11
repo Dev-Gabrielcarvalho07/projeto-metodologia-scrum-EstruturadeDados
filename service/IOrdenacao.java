@@ -1,6 +1,6 @@
-package br.com.projeto.service;
+package service;
 
-import br.com.projeto.model.Produto;
+import model.Produto;
 
 public interface IOrdenacao {
     void selectionSort(Produto[] lista);
