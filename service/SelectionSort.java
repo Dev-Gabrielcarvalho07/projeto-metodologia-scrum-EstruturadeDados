@@ -2,10 +2,10 @@ package service;
 
 import model.Produto;
 
-public class selectionSort implements IOrdenacao{
+public class SelectionSort implements IOrdenacao{
 
     @Override
-    public void selectionSort(Produto[] lista){
+    public void SelectionSort(Produto[] lista){
     
         for(int i = 0; i < lista.length - 1; i++){
             int indiceMenor = i; // O codigo presume que o primeiro elemento é o "menor"
