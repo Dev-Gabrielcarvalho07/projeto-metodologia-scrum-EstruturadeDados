@@ -1,6 +1,6 @@
 package service;
 
-import br.com.projeto.model.Produto;
+import model.Produto;
 import java.util.LinkedList;
 
 public class TabelaHash {
