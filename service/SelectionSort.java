@@ -4,7 +4,7 @@ import model.Produto;
 
 public class SelectionSort{
 
-    public static void SelectionSort(Produto[] lista){
+    public static void selectionSort(Produto[] lista){
     
         for(int i = 0; i < lista.length - 1; i++){
             int indiceMenor = i; // O codigo presume que o primeiro elemento é o "menor"
