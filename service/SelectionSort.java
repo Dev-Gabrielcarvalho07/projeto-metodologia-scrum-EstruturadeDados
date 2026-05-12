@@ -2,9 +2,8 @@ package service;
 
 import model.Produto;
 
-public class SelectionSort implements IOrdenacao{
+public class SelectionSort{
 
-    @Override
     public static void SelectionSort(Produto[] lista){
     
         for(int i = 0; i < lista.length - 1; i++){
